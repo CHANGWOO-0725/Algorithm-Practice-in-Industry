@@ -568,7 +568,9 @@ def get_papers_from_all_categories(run_status=None):
 
 
 def perform_rough_ranking(all_papers, run_status=None):
-    """执行粗排并标记过滤状态"""
+    """执行粗排并标记过滤状态，保证至少返回 MIN_ROUGH_PAPERS 篇"""
+    MIN_ROUGH_PAPERS = int(os.environ.get("MIN_ROUGH_PAPERS", "10"))
+
     # 直接使用rough_rank_papers函数进行并发粗排，获取过滤后的论文
     filtered_papers, analyzed_papers = rough_rank_papers(
         all_papers,
@@ -581,19 +583,29 @@ def perform_rough_ranking(all_papers, run_status=None):
             success=len(analyzed_papers),
             scores=[paper.get('relevance_score', 0) for paper in analyzed_papers],
         )
-    
+
+    # 如果通过阈值的不够，从剩余论文中补足至少 MIN_ROUGH_PAPERS 篇
+    if len(filtered_papers) < MIN_ROUGH_PAPERS:
+        analyzed_ids = {p['arxiv_id'] for p in filtered_papers}
+        fallback = [p for p in analyzed_papers if p['arxiv_id'] not in analyzed_ids]
+        shortage = MIN_ROUGH_PAPERS - len(filtered_papers)
+        filtered_papers.extend(fallback[:shortage])
+        print(f"⚠️ 阈值 {ROUGH_SCORE_THRESHOLD} 分仅通过 {len(filtered_papers) - shortage} 篇，"
+              f"从低分论文中补足 {shortage} 篇，共 {len(filtered_papers)} 篇进入精排")
+
     # 更新all_papers中的论文信息并标记过滤状态
+    filtered_ids = {p['arxiv_id'] for p in filtered_papers}
     for paper in filtered_papers:
         arxiv_id = paper['arxiv_id']
         all_papers[arxiv_id].update(paper)
         all_papers[arxiv_id]['is_filtered'] = False  # 通过粗排的论文
-    
+
     # 标记未通过粗排的论文
     for arxiv_id, paper in all_papers.items():
-        if arxiv_id not in [p['arxiv_id'] for p in filtered_papers]:
+        if arxiv_id not in filtered_ids:
             all_papers[arxiv_id]['is_filtered'] = True  # 未通过粗排的论文
-    
-    print(f"✨ 粗排筛选 {len(filtered_papers)} 篇高质量论文。")
+
+    print(f"✨ 粗排筛选 {len(filtered_papers)} 篇论文进入精排。")
     return filtered_papers
 
 
