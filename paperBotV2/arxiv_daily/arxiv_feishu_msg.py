@@ -9,6 +9,11 @@ FEISHU_URLS = os.environ.get("FEISHU_URL", "").split(',')
 # 去除空字符串和空格
 FEISHU_URLS = [url.strip() for url in FEISHU_URLS if url.strip()]
 RETURN_PAPERS = int(os.environ.get("RETURN_PAPERS", "20"))
+# GitHub Pages 地址，用于"查看完整列表"按钮
+GITHUB_PAGES_URL = os.environ.get(
+    "GITHUB_PAGES_URL",
+    "https://changwoo-0725.github.io/Algorithm-Practice-in-Industry/arxiv_daily/index.html",
+)
 
 
 def get_latest_json_file(json_dir):
@@ -61,7 +66,7 @@ def load_paper_data(file_path):
         return []
 
 
-def send_papers_to_feishu(papers, feishu_urls=None):
+def send_papers_to_feishu(papers, feishu_urls=None, pages_url=None):
     # 如果没有指定URL列表，使用默认的FEISHU_URLS
     if feishu_urls is None:
         feishu_urls = FEISHU_URLS
@@ -72,40 +77,80 @@ def send_papers_to_feishu(papers, feishu_urls=None):
     if not feishu_urls:
         print("⚠️ 没有有效的飞书URL，跳过发送消息")
         return
-    
-    date = datetime.now().strftime('%Y-%m-%d')
-    
-    card_data = {
-        "type": "template",
-        "data": {
-            "template_id": "AAqxH62u1uNko",
-            "template_version_name": "1.0.8",
-            "template_variable": {
-                "loop": [],
-                "date": date
-            }
-        }
-    }
 
+    if pages_url is None:
+        pages_url = GITHUB_PAGES_URL
+
+    date = datetime.now().strftime('%Y-%m-%d')
+
+    # 构建自定义卡片（不使用飞书模板，URL 完全可控）
+    elements = []
     for paper in papers:
         title = paper['title']
         translation = paper.get('translation', 'N/A')
-        score = paper.get('rerank_relevance_score', 'N/A')
-        summary = paper.get('summary', 'N/A')
+        score = paper.get('rerank_relevance_score', paper.get('relevance_score', 0))
+        if isinstance(score, int):
+            stars = "⭐️" * score
+            score_text = f"{stars} \n{score}分"
+        else:
+            score_text = "N/A"
+        summary = paper.get('summary', paper.get('ori_summary', 'N/A'))
         url = paper['url']
-        
-        paper = f"[{title}]({url})"
-        score = "⭐️" * score + f" <text_tag color='blue'>{score}分</text_tag>" if isinstance(score, int) else "N/A"
-        
-        card_data['data']['template_variable']['loop'].append({
-            "paper": paper,
-            "translation": translation,
-            "score": score,
-            "summary": summary
+
+        # 每篇论文：标题（可点击）+ 翻译 + 评分 + 摘要
+        elements.append({
+            "tag": "div",
+            "text": {
+                "tag": "lark_md",
+                "content": f"**[{title}]({url})**\n{translation}\n{score_text}"
+            }
         })
-        
-    card = json.dumps(card_data)
-    body = json.dumps({"msg_type": "interactive", "card": card})
+        if summary and summary != 'N/A':
+            elements.append({
+                "tag": "div",
+                "text": {
+                    "tag": "lark_md",
+                    "content": f"📝 {summary}"
+                }
+            })
+        elements.append({"tag": "hr"})
+
+    # 底部按钮
+    elements.append({
+        "tag": "note",
+        "elements": [{
+            "tag": "plain_text",
+            "content": "🎃 个性化论文推送Bot | 自定义Prompt筛选 | Powered by DeepSeek"
+        }]
+    })
+    elements.append({
+        "tag": "action",
+        "actions": [{
+            "tag": "button",
+            "text": {
+                "tag": "plain_text",
+                "content": "查看完整列表"
+            },
+            "url": pages_url,
+            "type": "default"
+        }]
+    })
+
+    card_data = {
+        "msg_type": "interactive",
+        "card": {
+            "header": {
+                "title": {
+                    "tag": "plain_text",
+                    "content": f"arXiv论文最新推送 @{date}"
+                },
+                "template": "blue"
+            },
+            "elements": elements
+        }
+    }
+
+    body = json.dumps(card_data)
     headers = {"Content-Type": "application/json"}
     failures = []
     
@@ -195,7 +240,7 @@ def main():
     
     # 发送到飞书
     if selected_papers:
-        send_papers_to_feishu(selected_papers)
+        send_papers_to_feishu(selected_papers, pages_url=GITHUB_PAGES_URL)
         print("✅ 飞书消息发送完成！")
     else:
         print("⚠️ 没有符合条件的论文可以发送")
