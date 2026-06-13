@@ -124,6 +124,9 @@ celerybeat.pid
 
 # Environments
 .env
+run_arxiv.sh
+cron_arxiv.sh
+arxiv_cron.log
 .venv
 env/
 venv/
