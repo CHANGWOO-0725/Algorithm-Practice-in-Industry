@@ -158,19 +158,20 @@ def main():
         print("无法获取最新的JSON文件，程序退出")
         return
     
-    # 从文件名中提取日期并检查是否为今天
+    # 从文件名中提取日期，手动触发时允许发送任意日期的JSON
     latest_file_name = os.path.basename(latest_json_file)
+    is_manual_trigger = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
     if latest_file_name.endswith('.json'):
         file_date_str = latest_file_name[:-5]  # 去掉.json后缀
         try:
-            # 解析文件名中的日期
             file_date = datetime.strptime(file_date_str, '%Y%m%d')
-            # 获取今天的日期（不含时间）
             today = datetime.now().date()
-            # 检查文件日期是否为今天
             if file_date.date() != today:
-                print(f"⚠️ 最新文件的日期 {file_date.date()} 不是今天 {today}，避免重复发送，程序退出")
-                return
+                if is_manual_trigger:
+                    print(f"⚠️ 手动触发模式：最新文件日期 {file_date.date()} 不是今天 {today}，但继续发送")
+                else:
+                    print(f"⚠️ 最新文件的日期 {file_date.date()} 不是今天 {today}，避免重复发送，程序退出")
+                    return
         except ValueError:
             print(f"⚠️ 无法从文件名 {latest_file_name} 中解析日期，继续处理")
     
