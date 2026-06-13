@@ -79,7 +79,7 @@ jobs:
           ARXIV_RETRY_MAX_WAIT: "2400"
           ARXIV_API_BASE_URLS: "https://export.arxiv.org/api/query,https://arxiv.org/api/query"
           # 粗排分数阈值
-          ROUGH_SCORE_THRESHOLD: "4"
+          ROUGH_SCORE_THRESHOLD: "6"
           # 返回论文数量
           RETURN_PAPERS: "20"
           # 确保脚本可以找到paperBotV2模块
