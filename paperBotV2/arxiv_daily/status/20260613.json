@@ -3,14 +3,14 @@
   "status": "success",
   "stage": "completed",
   "workflow": "arxiv_daily_full",
-  "run_id": "27451349736",
+  "run_id": "27451758485",
   "run_attempt": "1",
   "trigger": "workflow_dispatch",
-  "started_at": "2026-06-13T00:46:20+00:00",
-  "ended_at": "2026-06-13T00:52:19+00:00",
+  "started_at": "2026-06-13T01:01:19+00:00",
+  "ended_at": "2026-06-13T01:07:11+00:00",
   "fetch": {
     "success": true,
-    "total_papers": 74,
+    "total_papers": 72,
     "by_category": {
       "cs.IR": {
         "success": true,
@@ -26,7 +26,7 @@
       },
       "cs.CV": {
         "success": true,
-        "papers": 38,
+        "papers": 36,
         "pages": 1,
         "error": ""
       }
