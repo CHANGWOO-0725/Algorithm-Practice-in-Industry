@@ -3,11 +3,11 @@
   "status": "success",
   "stage": "completed",
   "workflow": "arxiv_daily_full",
-  "run_id": "27452772410",
+  "run_id": "27453168931",
   "run_attempt": "1",
   "trigger": "workflow_dispatch",
-  "started_at": "2026-06-13T01:41:08+00:00",
-  "ended_at": "2026-06-13T01:49:07+00:00",
+  "started_at": "2026-06-13T01:56:44+00:00",
+  "ended_at": "2026-06-13T02:04:22+00:00",
   "fetch": {
     "success": true,
     "total_papers": 62,
@@ -15,32 +15,32 @@
       "cs.IR": {
         "success": true,
         "papers": 2,
-        "pages": 1,
+        "pages": 0,
         "error": ""
       },
       "cs.CL": {
         "success": true,
         "papers": 29,
-        "pages": 1,
+        "pages": 0,
         "error": ""
       },
       "cs.CV": {
         "success": true,
         "papers": 31,
-        "pages": 1,
+        "pages": 0,
         "error": ""
       }
     }
   },
   "llm": {
     "rough_rank_total": 61,
-    "rough_rank_success": 0,
-    "rough_rank_failed": 61,
-    "fine_rank_total": 0,
-    "fine_rank_success": 0,
+    "rough_rank_success": 61,
+    "rough_rank_failed": 0,
+    "fine_rank_total": 12,
+    "fine_rank_success": 12,
     "fine_rank_failed": 0,
-    "avg_rough_score": 0,
-    "avg_fine_score": 0
+    "avg_rough_score": 2.34,
+    "avg_fine_score": 7.25
   },
   "output": {
     "daily_json_written": true,
