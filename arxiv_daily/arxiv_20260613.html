@@ -7,7 +7,7 @@
     <title>arXiv 每日论文精选</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/styles.css?v=1781319091">
+    <link rel="stylesheet" href="static/styles.css?v=1781319803">
     <script src="static/tailwind.config.js"></script>
 
     <style>
@@ -132,11 +132,11 @@
                 </div>
                 <div class="flex items-center">
                     <span class="text-gray-500 mr-1"><i class="fa fa-star"></i> 精选论文数:</span>
-                    <span id="selected-papers" class="font-semibold text-accent">0</span>
+                    <span id="selected-papers" class="font-semibold text-accent">10</span>
                 </div>
                 <div class="flex items-center">
                     <span class="text-gray-500 mr-1"><i class="fa fa-line-chart"></i> 平均评分:</span>
-                    <span id="avg-score" class="font-semibold text-secondary">2.3</span>
+                    <span id="avg-score" class="font-semibold text-secondary">1.6</span>
                 </div>
             </div>
         </div>
@@ -163,85 +163,16 @@
 
         <!-- 论文列表 -->
         <div id="papers-container" class="grid grid-cols-1 gap-4">
-            <!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13533v1" target="_blank" rel="noopener noreferrer">
-                OneRetrieval：用可编辑生成模型统一多分支电商检索
-            </a>
-        </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>9/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            OneRetrieval: Unifying Multi-Branch E-commerce Retrieval with an Editable Generative Model
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Xuxin Zhang, Ben Chen, Yue Lv, Siyuan Wang, Yupeng Li, Yufei Ma, Zihan Liang, To...
-        </div>
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">针对电商检索中多分支检索缺乏联合优化且倒排索引分支具有实时可编辑性的需求，提出OneRetrieval，一种基于关键词对齐编码的可编辑生成式检索方法，通过将标识符位置绑定到可解释的属性词并保留预留槽位，使得部署后无需重训即可绑定新词，同时保持竞争性召回质量。</p>
-        </div>
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">直接提出首个可编辑的生成式检索模型，统一多分支电商检索，保持实时编辑能力；核心贡献与LLM Agent（生成式检索）和自演化系统（可编辑性）高度相关。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 16:21:13
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13533v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13533v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.IR</span></div>
-            </div>
             
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Industrial e-commerce search serves hundreds of millions of items through a multi-branch retrieval stage fused by hand-tuned merging without joint optimization. Generative retrieval (GR) raises the prospect of collapsing this stage into a single model, yet unification is gated by more than retrieval quality: the inverted-index branch converts below the platform average yet persists because it is almost the only branch where operations can inject a new term within hours without any model update; a one-model substitute must preserve this real-time editability. Existing GR methods structurally lack it: closed-codebook methods fix each slot to a quantized embedding at training, while open-vocabulary methods leave new-term routing to model generalization. We present OneRetrieval, a one-model GR framework built on Keyword-Aligned Encoding (KAE), which ties each identifier position to an interpretable attribute word, pairing competitive recall quality with the editability of the inverted index -- to our knowledge the first editable generative retrieval method. An information-theoretic merging organizes 18 attribute categories into six codebook groups with non-uniform capacity; reserved slots in each codebook can be bound to new words after deployment without retraining; and a four-stage fine-tuning pipeline secures quality and editability jointly. On five million real-traffic requests, OneRetrieval matches the deep recall of the strongest generative baseline, with an intervention hit rate over an order of magnitude above closed-codebook encodings. Online, replacing the inverted-index branch significantly lifts order volume; extending to nearly the entire stage holds conversion while improving CTR. The system is deployed at Kuaishou, serving hundreds of millions of PVs daily.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13681v1" target="_blank" rel="noopener noreferrer">
-                EvoArena：动态环境中鲁棒性LLM代理的记忆演化追踪
+                <i class="fa fa-star text-yellow-400 mr-1"></i>EvoArena：在动态环境中追踪记忆进化以实现鲁棒的LLM智能体
             </a>
         </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>9/10
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>2/10
         </span>
     </div>
     
@@ -258,13 +189,13 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">面向LLM Agent在动态环境中的鲁棒性问题，提出EvoArena基准和新记忆范式EvoMem，通过记录结构化更新历史使Agent推理环境演化。</p>
+            <p class="text-gray-600 text-sm mt-1">论文提出EvoArena基准测试和EvoMem记忆范式，用于评估和改善LLM Agent在动态环境中的鲁棒性，核心思想是通过记录记忆演化的结构化更新历史帮助Agent理解环境变化。</p>
         </div>
         
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文直接针对LLM Agent在动态环境中的记忆演化问题，提出基准和记忆范式，属于LLM Agent核心研究，与自我演化系统高度相关。</p>
+            <p class="text-gray-600 text-sm mt-1">本文介绍LLM Agent的基准测试和记忆方法，但未涉及推荐系统、搜索或广告，仅关注通用Agent在动态环境中的鲁棒性，与三个焦点领域均无明确关联。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -287,23 +218,71 @@
                 </div>
             </details>
     </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13643v1" target="_blank" rel="noopener noreferrer">
-                递归智能体利用
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13680v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>通过检索增强的强化微调学习类比推理
             </a>
         </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>9/10
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>2/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Zilin Xiao, Qi Ma, Chun-cheng Jason Chen, Xintao Chen, Avinash Atreya, Hanjie Ch...
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">针对传统检索不适用于复杂推理的问题，提出RA-RFT框架，通过基于推理收益的检索器训练和强化微调，使模型利用类比推理痕迹提升数学推理能力。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文提出RA-RFT框架，核心是检索增强的推理训练，应用于数学推理而非推荐、搜索或广告，与三个聚焦领域均无明确关联。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:59:52
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13680v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13680v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span><span class="category-tag">cs.AI</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Retrieval-augmented generation (RAG) has become a standard mechanism for grounding language models in external knowledge, yet conventional retrieval based on lexical or semantic similarity is poorly suited for complex reasoning tasks: a semantically similar problem may demand an entirely different solution strategy, while a superficially different problem may share the same underlying reasoning pattern. We propose Retrieval-Augmented Reinforcement Fine-Tuning (RA-RFT), a post-training framework that teaches language models to reason by analogy. RA-RFT uses gold-relevance distillation to train a retriever that ranks contexts by expected reasoning benefit rather than semantic overlap, and then fine-tunes the policy model via reinforcement fine-tuning methods with retrieved analogous demonstrations, so the model learns to leverage reasoning traces under verifiable outcome rewards. We further analyze the diversity of retrieved contexts and find that reasoning-aware retrieval surfaces complementary solution strategies that provide distinct reasoning scaffolds for individual problems. Across challenging mathematical reasoning benchmarks, RA-RFT consistently outperforms standard reinforcement fine-tuning methods. For example, it improves AIME 2025 average@32 accuracy by 7.1 and 2.8 points over GRPO for Qwen3-1.7B and Qwen3-4B respectively -- suggesting that reasoning-aware retrieval is a complementary axis of improvement and orthogonal to advances in reward design or training curricula.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13643v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>递归代理的利用
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>2/10
         </span>
     </div>
     
@@ -320,13 +299,13 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">主题：研究递归式语言模型在长上下文推理中的扩展方法。核心思想：提出递归式智能体框架RAH，将递归单元从模型调用扩展为完整的智能体工具集，包括文件系统、代码执行和规划，通过生成可执行脚本实现并行子智能体调度来提升推理能力。</p>
+            <p class="text-gray-600 text-sm mt-1">提出递归智能体框架（RAH），父智能体生成脚本并行生成子智能体，通过代码执行和工具调用处理细粒度任务，提升长上下文推理能力。</p>
         </div>
         
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文直接提出递归式智能体框架RAH，属于LLM Agent核心研究，并聚焦长上下文推理，与自进化推荐系统中的多智能体协作和自动研究工作流程高度相关。</p>
+            <p class="text-gray-600 text-sm mt-1">论文研究的是递归智能体框架（RAH），核心是长上下文推理和代码生成，没有明确涉及推荐系统、搜索或广告领域，也非自我进化或AutoML主题，与三个严格焦点领域无关。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -349,6 +328,391 @@
                 </div>
             </details>
     </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13427v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>VietFashion：面向文化服饰的草图-文本组合图像检索基准
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>2/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            VietFashion: Benchmarking Sketch-Text Composed Image Retrieval for Cultural Outfits
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Hoang-Nguyen Cao, Le-Hoang Bui, Dinh-Khoi Vo, Minh-Triet Tran, Trung-Nghia Le
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文构建一个文化服饰的草图-文本组合图像检索基准VietFashion，包含素描和语义描述，采用多目标检索设定，评估现有组合图像检索方法在细粒度文化语义建模上的不足。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文介绍一个针对传统越南服装的草图-文本组合图像检索基准，属于多模态检索或时尚检索领域，但完全未涉及LLM Agent、自进化系统或AutoML，与三个核心关注方向无任何明确关联。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 14:54:54
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13427v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13427v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CV</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Cultural garments pose a unique challenge for visual retrieval systems, as their identity often depends on subtle structural and symbolic details that are poorly captured by standard AI models. We introduce VietFashion, a new benchmark for sketch-text composed image retrieval centered on the Ao Dai, a traditional Vietnamese garment. VietFashion enables designers and researchers to retrieve culturally meaningful outfits using a combination of hand-drawn sketches, which convey garment structure, and textual descriptions, which encode cultural semantics. The dataset is initialized with 650 sketches and expanded using generative models to produce over 21,000 photorealistic images with aligned captions. Textual prompts that describe detailed outfit attributes, which are extracted from fashion magazines to ensure authenticity and diversity. To better reflect the inherent ambiguity of design intent, VietFashion adopts a multi-target retrieval setting, where a single query may correspond to multiple valid results. We establish standardized evaluation protocols and benchmark state-of-the-art composed image retrieval methods. Experimental results reveal significant performance gaps in modeling fine-grained cultural semantics and multi-modal composition, positioning VietFashion as a challenging benchmark for fine-grained fashion retrieval. The dataset is publicly available at: https://hng0303.github.io/VietFashion.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13533v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>OneRetrieval：用可编辑生成模型统一多分支电商检索
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            OneRetrieval: Unifying Multi-Branch E-commerce Retrieval with an Editable Generative Model
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Xuxin Zhang, Ben Chen, Yue Lv, Siyuan Wang, Yupeng Li, Yufei Ma, Zihan Liang, To...
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">提出OneRetrieval，一种可编辑的生成式检索框架，通过关键词对齐编码（KAE）统一工业电商搜索中的多分支检索，支持实时注入新词而无需重训练。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文聚焦于电商搜索中的生成式检索，涉及多分支检索的统一，属于搜索领域，但没有明确涉及LLM Agent、自演化系统或AutoML。核心创新在于可编辑的生成检索，与三个聚焦领域均无直接关联。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 16:21:13
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13533v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13533v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.IR</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Industrial e-commerce search serves hundreds of millions of items through a multi-branch retrieval stage fused by hand-tuned merging without joint optimization. Generative retrieval (GR) raises the prospect of collapsing this stage into a single model, yet unification is gated by more than retrieval quality: the inverted-index branch converts below the platform average yet persists because it is almost the only branch where operations can inject a new term within hours without any model update; a one-model substitute must preserve this real-time editability. Existing GR methods structurally lack it: closed-codebook methods fix each slot to a quantized embedding at training, while open-vocabulary methods leave new-term routing to model generalization. We present OneRetrieval, a one-model GR framework built on Keyword-Aligned Encoding (KAE), which ties each identifier position to an interpretable attribute word, pairing competitive recall quality with the editability of the inverted index -- to our knowledge the first editable generative retrieval method. An information-theoretic merging organizes 18 attribute categories into six codebook groups with non-uniform capacity; reserved slots in each codebook can be bound to new words after deployment without retraining; and a four-stage fine-tuning pipeline secures quality and editability jointly. On five million real-traffic requests, OneRetrieval matches the deep recall of the strongest generative baseline, with an intervention hit rate over an order of magnitude above closed-codebook encodings. Online, replacing the inverted-index branch significantly lifts order volume; extending to nearly the entire stage holds conversion while improving CTR. The system is deployed at Kuaishou, serving hundreds of millions of PVs daily.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13663v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>HyperTool：超越逐步工具调用的工具增强型代理
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Yaxin Du, Yifan Zhou, Yujie Ge, Jiajun Wang, Xianghe Pang, Shuo Tang, Tuney Zhen...
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">该论文研究工具增强型LLM代理中原子工具调用导致的执行粒度不匹配问题，提出HyperTool统一可执行接口，通过代码块将多个工具调用折叠为单次外层调用，减少模型上下文消耗。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文关注通用工具增强型LLM代理的接口设计，与推荐系统、自进化系统或AutoML for RecSys/Search/Ads均无明确关联，因此评分为1。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:56:36
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13663v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13663v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Tool-augmented LLM agents commonly rely on step-wise atomic tool calls, where each invocation, observation, and value transfer is exposed in the main reasoning trace. This creates an \emph{execution-granularity mismatch}: locally deterministic tool workflows are unfolded into repeated model-visible decisions, consuming context and forcing the model to manage low-level dataflow in the trace. We introduce \textbf{HyperTool}, a unified executable MCP-style tool interface that changes the model-visible unit of tool execution. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values, and pass intermediate results locally, folding deterministic tool subroutines into a single outer call. To train models to use this interface, we synthesize HyperTool-format trajectories from cross-tool compositional tasks and verify them in real MCP environments. On MCP-Universe, HyperTool improves average accuracy from 15.69\% to 35.29\% on Qwen3-32B and from 9.93\% to 33.33\% on Qwen3-8B, and surpass GPT-OSS and Kimi-k2.5 on average accuracy, showing that our HyperTool can substantially improve multi-step tool use.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13649v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>操作一致性：大型语言模型中组合推理失败的免标签信号
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Operadic consistency: a label-free signal for compositional reasoning failures in LLMs
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Nathaniel Bottman, Yinhong Liu, Kyle Richardson
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">提出操作元一致性（OC）信号，用于在推理时无标签检测LLM的组合推理失败，通过比较模型直接回答与其显式分解后组合回答的一致性，在多个QA数据集上验证有效性。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文研究的是LLM在组合推理中的一致性检测，聚焦于通用推理能力，与推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML无关，因此严格拒绝。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:50:40
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13649v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13649v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span><span class="category-tag">cs.LG</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Detecting LLM reasoning failures at inference time without ground-truth labels has motivated a wide range of confidence baselines, including self-consistency, semantic entropy, and P(True), built on within-question sampling and self-evaluation. Operad theory, the formalism for systems built by iterated substitution, suggests a complementary diagnostic: a model&#39;s direct answer to a compositional query should agree with the answer it produces by composing a stated decomposition of the same query. We instantiate this idea as operadic consistency (OC), a per-question signal. Across twelve instruction-tuned LLMs (4B to 671B parameters, open-weights and closed-source) on four multi-hop QA datasets, OC is strongly correlated with accuracy on every dataset (Pearson $r \in [0.86, 0.94]$, all $p \leq 0.0004$), and is the only signal we evaluate with $r \geq 0.85$ uniformly across all four datasets. Chain-of-thought self-consistency (CoT-SC; Wang et al., 2023) matches OC on HotpotQA and DROP ($r = 0.93, 0.87$) but drops to $r \approx 0.45$ on MuSiQue and StrategyQA. At the per-question level, OC contributes information beyond CoT-SC and semantic entropy on every dataset (cluster-robust $p \leq 10^{-16}$ for the OC coefficient), and the conclusion is robust to additionally controlling for constructed decomposition-aware baselines ($p \leq 10^{-13}$). The same signal yields selective-prediction improvements (accuracy at fixed coverage) over a tuned CoT-SC baseline at the equal-cost $K = 3$ budget (AUARC lifts of +0.086 to +0.096 and AUROC lifts of +0.092 to +0.164; 95% CIs exclude zero on every cell). On five frontier thinking models, where the decomposition is extracted from the model&#39;s own chain of thought, the same equal-cost comparison gives positive selective-prediction point-estimate lift on all 16 (dataset, budget, metric) cells tested, with 95% CIs excluding zero on 12 of the 16.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>多智能体编排的奖励建模
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Reward Modeling for Multi-Agent Orchestration
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>King Yeung Tsang, Zihao Zhao, Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Semi...
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">本文提出OrchRM，一种基于自监督的编排奖励模型，通过多智能体执行中的中间产物构建胜负对训练奖励模型，实现高效的多智能体编排训练和测试时扩展。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文讨论的是LLM多智能体系统的编排奖励建模，未明确提及推荐系统，且应用领域为数学推理、问答等，与三个重点关注方向均无明确关联。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:16:24
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13598v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.AI</span><span class="category-tag">cs.CL</span><span class="category-tag">cs.LG</span><span class="category-tag">cs.MA</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Multi-Agent Systems (MAS) built on Large Language Models (LLMs) require effective orchestration to coordinate specialized agents, yet training such orchestrators is hindered by limited supervision and high computational cost. We propose Orchestration Reward Modeling (OrchRM), a self-supervised framework for evaluating orchestration quality without human annotations. OrchRM leverages intermediate artifacts from multi-agent executions to construct win-lose pairs for Bradley-Terry reward model training. Unlike existing MAS test-time scaling and orchestrator training frameworks that rely on costly sub-agent rollouts, OrchRM operates directly at the orchestration level, enabling efficient and high-performing reward-guided orchestrator training and MAS test-time scaling. OrchRM improves training efficiency by up to 10x in token usage while improving MAS test-time scaling performance by up to 8% in accuracy. These gains consistently transfer across multiple domains, including mathematical reasoning, web-based question answering, and multi-hop reasoning, demonstrating orchestration-level reward modeling as a scalable direction for robust multi-agent orchestration. Code will be available at https://github.com/Wang-ML-Lab/OrchRM.
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13676v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>模态强制实现可扩展的空间生成
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Modality Forcing for Scalable Spatial Generation
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Bardienus Pieter Duisterhof, Deva Ramanan, Jeffrey Ichnowski, Justin Johnson, Ke...
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">本文提出Modality Forcing方法，通过为不同模态分配独立噪声水平，实现图像和深度图的联合生成，并利用DiT模型在稀疏深度数据上训练，验证了图像生成可作为空间感知的可扩展预训练目标。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">论文讨论的是文本到图像生成中的空间感知（深度预测），与LLM Agent推荐系统、自我进化系统或AutoML for RecSys/Search/Ads均无任何关联，属于完全偏离主题。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:59:45
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13676v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13676v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CV</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Text-to-image (T2I) models contain rich spatial priors. Synthesizing photorealistic, cluttered scenes requires an understanding of geometry, including perspective and relative scale. Prior works adapt T2I models to leverage this prior for depth prediction, but they require dense depth data and involve complex recipes. We propose Modality Forcing, a simple, scalable post-training recipe for joint image-depth generation using a single DiT trained on sparse depth data. Modality Forcing enables conditional and joint generation of image and depth in any permutation by assigning separate noise levels per modality. Per-modality decoders let us train on sparse, real-world depth and achieve strong, generalizable depth prediction. We further show that Modality Forcing inherits the scalability of T2I pre-training: by training a set of T2I models from scratch (370M to 3.3B parameters), we find that larger models trained on more image data produce more accurate depth. Our strongest model is competitive with state-of-the-art monocular depth estimators and reduces AbsRel by 57% relative to existing joint image-depth generative models. These results provide strong evidence that image generation is a scalable pre-training objective for spatial perception. https://modality-forcing.github.io/
+                </div>
+            </details>
+    </div>
+</div>
+<div class="paper-card p-4 expanded">
+    <div class="flex justify-between items-start mb-2">
+        <h3 class="text-lg font-semibold text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13461v1" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-star text-yellow-400 mr-1"></i>强化学习用于神经模型编辑
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Reinforcement Learning for Neural Model Editing
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Shaivi Malik
+        </div>
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
+            <p class="text-gray-600 text-sm mt-1">将神经模型编辑形式化为强化学习问题，通过MaskWorld和ShiftWorld环境学习权重修改策略，应用于文本分类的偏见缓解和图像分类的机器遗忘。</p>
+        </div>
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">该论文研究神经模型编辑的强化学习框架，未涉及LLM Agent推荐、自进化系统或AutoML在推荐/搜索/广告中的应用。完全偏离严格指定的三个焦点领域。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 15:16:42
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13461v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13461v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.LG</span><span class="category-tag">cs.CV</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Editing pretrained neural networks requires specialized algorithms tailored to specific objectives. Designing such algorithms is often time-consuming and demands significant effort. We present an exploratory framework that formulates neural model editing as a reinforcement learning problem, where agents modify models using reward feedback. We introduce two environments: MaskWorld, where agents scale weights multiplicatively, and ShiftWorld, where agents apply additive weight updates. The reward function combines a utility-preservation objective with a task-specific editing objective, enabling agents to learn targeted modifications while maintaining overall model performance. We evaluate the framework on bias mitigation in text classification and machine unlearning in image classification, both of which traditionally rely on specialized algorithms. Our results show that the learned policies reduce forget set accuracy to nearly 0% while preserving over 90% retain set accuracy on the unlearning task. In the bias mitigation setting, the learned policies improve bias-related performance by more than 5% while maintaining general classification utility. Our findings show that neural model editing can be cast as a reinforcement learning problem, allowing editing policies to be learned from reward feedback rather than manually engineered for each task.
+                </div>
+            </details>
+    </div>
 </div><!--
  * @Author: Doragd doragd@users.noreply.github.com
  * @Date: 2025-10-09 23:23:38
@@ -361,7 +725,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13610v1" target="_blank" rel="noopener noreferrer">
-                一篇被污染的页面就足够了：评估生成式推荐系统中的网页内容污染
+                一个受污染的页面足矣：评估生成式推荐系统中的网页内容污染
             </a>
         </h3>
         <span class="score-badge bg-green-100 text-green-800">
@@ -422,70 +786,8 @@
 <div class="simple-paper-card p-3 collapsed-level-1">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13663v1" target="_blank" rel="noopener noreferrer">
-                HyperTool：超越逐步工具调用的工具增强型代理
-            </a>
-        </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>8/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Yaxin Du, Yifan Zhou, Yujie Ge, Jiajun Wang, Xianghe Pang, Shuo Tang, Tuney Zhen...
-        </div>
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">为解决工具增强型LLM代理中逐步工具调用导致的上下文浪费和低效问题，提出HyperTool，一种统一的可执行MCP风格工具接口，将多个原子工具调用折叠为单个外部调用，减少模型决策负担。</p>
-        </div>
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">直接关于LLM Agent的工具使用方式创新，属于LLM Agent在工具调用方面的核心方法改进，高度相关。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:56:36
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13663v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13663v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Tool-augmented LLM agents commonly rely on step-wise atomic tool calls, where each invocation, observation, and value transfer is exposed in the main reasoning trace. This creates an \emph{execution-granularity mismatch}: locally deterministic tool workflows are unfolded into repeated model-visible decisions, consuming context and forcing the model to manage low-level dataflow in the trace. We introduce \textbf{HyperTool}, a unified executable MCP-style tool interface that changes the model-visible unit of tool execution. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values, and pass intermediate results locally, folding deterministic tool subroutines into a single outer call. To train models to use this interface, we synthesize HyperTool-format trajectories from cross-tool compositional tasks and verify them in real MCP environments. On MCP-Universe, HyperTool improves average accuracy from 15.69\% to 35.29\% on Qwen3-32B and from 9.93\% to 33.33\% on Qwen3-8B, and surpass GPT-OSS and Kimi-k2.5 on average accuracy, showing that our HyperTool can substantially improve multi-step tool use.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13662v1" target="_blank" rel="noopener noreferrer">
-                EurekAgent：智能体环境工程是自主科学发现所需的一切
+                EurekAgent：智能体环境工程是自主科学发现的全部所需
             </a>
         </h3>
         <span class="score-badge bg-green-100 text-green-800">
@@ -546,70 +848,8 @@
 <div class="simple-paper-card p-3 collapsed-level-1">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener noreferrer">
-                多智能体编排的奖励建模
-            </a>
-        </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>8/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            Reward Modeling for Multi-Agent Orchestration
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>King Yeung Tsang, Zihao Zhao, Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Semi...
-        </div>
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">针对LLM多智能体编排缺乏监督信号的问题，提出自监督的编排奖励模型OrchRM，利用中间产物构造偏好对训练奖励模型，实现高效奖励引导的编排器训练和测试时扩展。</p>
-        </div>
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">直接面向LLM多智能体系统的编排奖励建模，属于LLM Agent核心方法，且自监督方式与自我进化相关。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:16:24
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13598v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13598v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.AI</span><span class="category-tag">cs.CL</span><span class="category-tag">cs.LG</span><span class="category-tag">cs.MA</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Multi-Agent Systems (MAS) built on Large Language Models (LLMs) require effective orchestration to coordinate specialized agents, yet training such orchestrators is hindered by limited supervision and high computational cost. We propose Orchestration Reward Modeling (OrchRM), a self-supervised framework for evaluating orchestration quality without human annotations. OrchRM leverages intermediate artifacts from multi-agent executions to construct win-lose pairs for Bradley-Terry reward model training. Unlike existing MAS test-time scaling and orchestrator training frameworks that rely on costly sub-agent rollouts, OrchRM operates directly at the orchestration level, enabling efficient and high-performing reward-guided orchestrator training and MAS test-time scaling. OrchRM improves training efficiency by up to 10x in token usage while improving MAS test-time scaling performance by up to 8% in accuracy. These gains consistently transfer across multiple domains, including mathematical reasoning, web-based question answering, and multi-hop reasoning, demonstrating orchestration-level reward modeling as a scalable direction for robust multi-agent orchestration. Code will be available at https://github.com/Wang-ML-Lab/OrchRM.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13673v1" target="_blank" rel="noopener noreferrer">
-                SpatialClaw: 重新思考智能体空间推理的动作接口
+                SpatialClaw：重新思考空间推理的智能体动作接口
             </a>
         </h3>
         <span class="score-badge bg-green-100 text-green-800">
@@ -670,70 +910,8 @@
 <div class="simple-paper-card p-3 collapsed-level-1">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13680v1" target="_blank" rel="noopener noreferrer">
-                通过检索增强的强化微调学习类比推理
-            </a>
-        </h3>
-        <span class="score-badge bg-green-100 text-green-800">
-            <i class="fa fa-star mr-1"></i>6/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            Learning to Reason by Analogy via Retrieval-Augmented Reinforcement Fine-Tuning
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Zilin Xiao, Qi Ma, Chun-cheng Jason Chen, Xintao Chen, Avinash Atreya, Hanjie Ch...
-        </div>
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-lightbulb-o text-yellow-500 mr-1"></i>核心总结:</strong>
-            <p class="text-gray-600 text-sm mt-1">本文针对复杂推理任务中语义检索无法有效识别潜在推理模式的问题，提出 RA-RFT 框架，通过“黄金相关性蒸馏”训练检索器根据预期推理收益排序，并利用强化学习方法使模型学会利用检索到的类比推理示例，从而提升推理的泛化能力。</p>
-        </div>
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">RA-RFT 结合了检索增强与强化学习微调，聚焦于推理能力提升，虽非直接针对推荐/搜索/广告，但推理与类比学习对智能体系统有启发价值。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:59:52
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13680v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13680v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span><span class="category-tag">cs.AI</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Retrieval-augmented generation (RAG) has become a standard mechanism for grounding language models in external knowledge, yet conventional retrieval based on lexical or semantic similarity is poorly suited for complex reasoning tasks: a semantically similar problem may demand an entirely different solution strategy, while a superficially different problem may share the same underlying reasoning pattern. We propose Retrieval-Augmented Reinforcement Fine-Tuning (RA-RFT), a post-training framework that teaches language models to reason by analogy. RA-RFT uses gold-relevance distillation to train a retriever that ranks contexts by expected reasoning benefit rather than semantic overlap, and then fine-tunes the policy model via reinforcement fine-tuning methods with retrieved analogous demonstrations, so the model learns to leverage reasoning traces under verifiable outcome rewards. We further analyze the diversity of retrieved contexts and find that reasoning-aware retrieval surfaces complementary solution strategies that provide distinct reasoning scaffolds for individual problems. Across challenging mathematical reasoning benchmarks, RA-RFT consistently outperforms standard reinforcement fine-tuning methods. For example, it improves AIME 2025 average@32 accuracy by 7.1 and 2.8 points over GRPO for Qwen3-1.7B and Qwen3-4B respectively -- suggesting that reasoning-aware retrieval is a complementary axis of improvement and orthogonal to advances in reward design or training curricula.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13550v1" target="_blank" rel="noopener noreferrer">
-                面向长文档检索增强生成的不确定性感知混合检索
+                面向长文档RAG的不确定性感知混合检索
             </a>
         </h3>
         <span class="score-badge bg-green-100 text-green-800">
@@ -795,7 +973,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13544v1" target="_blank" rel="noopener noreferrer">
-                面向实时多方语音代理的自适应话轮转换
+                实时多方语音代理的自适应轮流发言
             </a>
         </h3>
         <span class="score-badge bg-green-100 text-green-800">
@@ -856,179 +1034,8 @@
 <div class="simple-paper-card p-3 collapsed-level-1">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13438v1" target="_blank" rel="noopener noreferrer">
-                CQC-RAG：通过跨查询一致性实现稳健的检索增强生成
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>2/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            CQC-RAG: Robust Retrieval-Augmented Generation via Cross-Query Consistency
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Yanjia Sun, Sifan Liu, Jie Shao
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文关注检索增强生成（RAG）中的鲁棒性，属于通用NLP方法，未涉及LLM Agent在推荐系统中的应用、推荐/搜索/广告领域的自演化系统或AutoML。缺乏与三个焦点领域的明确关联。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 15:01:49
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13438v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13438v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.IR</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Retrieval-Augmented Generation (RAG) has become a common approach for improving the factuality of Large Language Models (LLMs), yet its reliability remains highly sensitive to how external evidence is retrieved and used. Semantically equivalent queries with different syntactic forms may lead to different retrieval results, while irrelevant or misleading documents can further induce hallucinated answers. Existing multi-path reasoning methods improve robustness by sampling multiple candidate answers and applying voting- or confidence-based selection, but they still face two limitations: diversity is often injected through uncontrollable decoding randomness, and answer evaluation is usually confined to a single query-induced evidence view. To address these limitations, we propose a Cross-Query Consistency Hypothesis: correct answers tend to maintain high confidence across semantically equivalent but syntactically diverse queries, whereas noise-induced hallucinations exhibit unstable confidence under such query variations. Based on this hypothesis, we introduce CQC-RAG, a framework that co-designs query-level diversity injection with cross-query consistency evaluation. CQC-RAG rewrites the original question into diverse but meaning-preserving queries, reranks a shared document pool to construct query-conditioned reasoning contexts, applies an evidence-grounded protocol to extract answer-evidence pairs and selects answers according to their confidence stability across these contexts. This design enables self-evaluation without external supervision and does not rely on expanded retrieval coverage. Experiments on four open-domain question answering benchmarks show that CQC-RAG outperforms the strongest previous multi-query baseline by +4.76 pp EM on TriviaQA and +9.12 pp EM on MuSiQue, validating the effectiveness of cross-query consistency for filtering noise-induced hallucinations.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13624v1" target="_blank" rel="noopener noreferrer">
-                超越统一令牌：面向时间序列语言模型的自适应压缩
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>2/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Jialin Gan, Xin Qiu, Guangzhe Chen, Xue Wang
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题关注时间序列语言模型的自适应压缩，未提及推荐系统、搜索或广告领域的任何应用，也未涉及LLM智能体、自我进化或自动机器学习方向。因此与三个重点领域均不相关，应予以拒绝。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:39:26
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13624v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13624v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficient. In this paper, we study token efficiency in TS language modeling from an asymmetric-token perspective. We show that TS tokens have highly uneven spectral contributions, where many tokens share redundant frequency patterns while a small subset preserves critical temporal evidence. We also observe that prompt-token influence attenuates with model depth, suggesting that full prompt retention across all layers is unnecessary. Based on these findings, we develop an adaptive token budgeting framework that compresses TS tokens via frequency-domain structure and progressively reduces prompt tokens across layers. Experiments across forecasting, classification, imputation, and anomaly detection demonstrate up to \textit{\textbf{7.68$\times$}} inference acceleration and performance gains in \textit{\textbf{78\%}} of evaluated settings, showing the effectiveness of asymmetric token compression for scalable TS foundation models.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13537v1" target="_blank" rel="noopener noreferrer">
-                混合何时有效？多语言稠密检索中的查询嵌入插值分析
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>2/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            When Does Mixing Help? Analyzing Query Embedding Interpolation in Multilingual Dense Retrieval
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Tongyao Zhu, Chao-Ming Huang, Min-Yen Kan
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文聚焦于多语言稠密检索中的查询嵌入插值，属于信息检索领域，与LLM Agent推荐系统、自进化推荐系统或AutoML推荐系统无直接关联。题目未提及推荐系统、用户建模或智能体交互，不符合三个窄焦点中的任何一个，因此分数较低。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 16:23:16
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13537v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13537v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    While mixed-language querying is ubiquitous in multilingual communities, the sensitivity of dense retrievers to such queries remains poorly understood. We present a ratio-controlled study on mMARCO that systematically evaluates retrieval performance by varying the mixing proportion of parallel query translations via embedding-level mixing -- constructing mixed queries as an interpolation of monolingual embeddings. Experiments with BGE-M3 demonstrate that an optimal mixing ratio outperforms the best monolingual endpoint in 88/105 cases. We uncover a distinct asymmetry driven by English dominance: mixing is uniformly beneficial when retrieving from non-English document indices, whereas indices containing English are best served by pure English queries. Furthermore, English acts as the strongest mixing partner for every non-English document language. Finally, when controlling for English dominance, mixing gains correlate negatively with typological distance. We conclude that language-mix sensitivity is structured and predictable, and we validate the robustness of these patterns across model families and scales.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-1">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13679v1" target="_blank" rel="noopener noreferrer">
-                交错思考者：强化代理式交错生成
+                交织思考者：强化代理型交织生成
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1086,25 +1093,25 @@
  * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
-<div class="simple-paper-card p-3 collapsed-level-1">
+<div class="simple-paper-card p-3 collapsed-level-2">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13461v1" target="_blank" rel="noopener noreferrer">
-                用于神经模型编辑的强化学习
+            <a href="https://arxiv.org/abs/2606.13438v1" target="_blank" rel="noopener noreferrer">
+                CQC-RAG：基于跨查询一致性的鲁棒检索增强生成
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>2/10
+            <i class="fa fa-star mr-1"></i>1/10
         </span>
     </div>
     
     <div class="paper-details">
         <div class="mb-2 text-base text-gray-700">
-            Reinforcement Learning for Neural Model Editing
+            CQC-RAG: Robust Retrieval-Augmented Generation via Cross-Query Consistency
         </div>
         
         <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Shaivi Malik
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Yanjia Sun, Sifan Liu, Jie Shao
         </div>
         
         
@@ -1112,17 +1119,17 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题关注使用强化学习进行神经模型编辑，未提及推荐系统、搜索或广告领域，也未涉及LLM智能体、自演化系统或AutoML。因此不匹配三个核心方向，得分较低。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题明确提及RAG（检索增强生成）和一致性，未涉及推荐系统、搜索引擎或广告领域的任何应用，也非LLM Agent用于推荐、自我进化RecSys或AutoML for RecSys。属于通用NLP方法，与三个重点研究方向无关，应直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 15:16:42
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 15:01:49
                 <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13461v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13461v1
+                <a href="https://arxiv.org/abs/2606.13438v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13438v1
                 </a>
                 <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.LG</span><span class="category-tag">cs.CV</span></div>
+                <div class="flex flex-wrap"><span class="category-tag">cs.IR</span></div>
             </div>
             
             
@@ -1131,7 +1138,7 @@
                      查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
                  </summary> 
                  <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Editing pretrained neural networks requires specialized algorithms tailored to specific objectives. Designing such algorithms is often time-consuming and demands significant effort. We present an exploratory framework that formulates neural model editing as a reinforcement learning problem, where agents modify models using reward feedback. We introduce two environments: MaskWorld, where agents scale weights multiplicatively, and ShiftWorld, where agents apply additive weight updates. The reward function combines a utility-preservation objective with a task-specific editing objective, enabling agents to learn targeted modifications while maintaining overall model performance. We evaluate the framework on bias mitigation in text classification and machine unlearning in image classification, both of which traditionally rely on specialized algorithms. Our results show that the learned policies reduce forget set accuracy to nearly 0% while preserving over 90% retain set accuracy on the unlearning task. In the bias mitigation setting, the learned policies improve bias-related performance by more than 5% while maintaining general classification utility. Our findings show that neural model editing can be cast as a reinforcement learning problem, allowing editing policies to be learned from reward feedback rather than manually engineered for each task.
+                    Retrieval-Augmented Generation (RAG) has become a common approach for improving the factuality of Large Language Models (LLMs), yet its reliability remains highly sensitive to how external evidence is retrieved and used. Semantically equivalent queries with different syntactic forms may lead to different retrieval results, while irrelevant or misleading documents can further induce hallucinated answers. Existing multi-path reasoning methods improve robustness by sampling multiple candidate answers and applying voting- or confidence-based selection, but they still face two limitations: diversity is often injected through uncontrollable decoding randomness, and answer evaluation is usually confined to a single query-induced evidence view. To address these limitations, we propose a Cross-Query Consistency Hypothesis: correct answers tend to maintain high confidence across semantically equivalent but syntactically diverse queries, whereas noise-induced hallucinations exhibit unstable confidence under such query variations. Based on this hypothesis, we introduce CQC-RAG, a framework that co-designs query-level diversity injection with cross-query consistency evaluation. CQC-RAG rewrites the original question into diverse but meaning-preserving queries, reranks a shared document pool to construct query-conditioned reasoning contexts, applies an evidence-grounded protocol to extract answer-evidence pairs and selects answers according to their confidence stability across these contexts. This design enables self-evaluation without external supervision and does not rely on expanded retrieval coverage. Experiments on four open-domain question answering benchmarks show that CQC-RAG outperforms the strongest previous multi-query baseline by +4.76 pp EM on TriviaQA and +9.12 pp EM on MuSiQue, validating the effectiveness of cross-query consistency for filtering noise-induced hallucinations.
                 </div>
             </details>
     </div>
@@ -1147,7 +1154,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13668v1" target="_blank" rel="noopener noreferrer">
-                Influcoder: 将解码器的梯度影响排名蒸馏到编码器中进行数据归因
+                Influcoder: 将解码器的梯度影响排名蒸馏到编码器中用于数据归因
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1169,7 +1176,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文关注数据归因（data attribution）技术，主要涉及模型的可解释性和训练数据影响分析，未提及推荐系统、搜索引擎或广告系统。其核心方法（梯度影响排名蒸馏）属于通用机器学习技术，与LLM Agent、自演化系统或AutoML在RecSys/Search/Ads领域的特定应用无关。因此，不符合任何聚焦领域，应被拒稿。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于数据归因和模型蒸馏，没有提及推荐系统、搜索或广告领域的应用，也没有涉及LLM Agent、自演进系统或AutoML。该工作属于模型解释性和数据归因的一般方法，不在三个重点领域内。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1189,63 +1196,6 @@
                  </summary> 
                  <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
                     With the growth of LLMs&#39; (Large Language Models) capabilities, there has been an increasing push to curate high quality datasets by filtering samples in the training data. In general, Data Attribution (DA) methods aim to estimate how individual samples in a training dataset can precondition a model to generate certain outputs. As an example, one might be interested in which samples in the data could be the source of toxic behavior after training the LLM. Many methods quantify this conditioning through the paradigm of influence functions. While methods of this family are effective in its function, they lack the necessary processing speed and storage compactness to be practically implemented on large datasets. We propose a method, Influcoder, as a quick and cost-effective approach to influence-based Data Attribution at scale.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-2">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13649v1" target="_blank" rel="noopener noreferrer">
-                操作元一致性：大语言模型中组合推理失败的免标签信号
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>1/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            Operadic consistency: a label-free signal for compositional reasoning failures in LLMs
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Nathaniel Bottman, Yinhong Liu, Kyle Richardson
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文研究LLM中的组合推理失败检测，属于一般性LLM能力分析，未涉及推荐系统、搜索或广告领域，也不包含LLM Agent、自演化系统或AutoML视角，与当前三大关注领域均无关联。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:50:40
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13649v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13649v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span><span class="category-tag">cs.LG</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Detecting LLM reasoning failures at inference time without ground-truth labels has motivated a wide range of confidence baselines, including self-consistency, semantic entropy, and P(True), built on within-question sampling and self-evaluation. Operad theory, the formalism for systems built by iterated substitution, suggests a complementary diagnostic: a model&#39;s direct answer to a compositional query should agree with the answer it produces by composing a stated decomposition of the same query. We instantiate this idea as operadic consistency (OC), a per-question signal. Across twelve instruction-tuned LLMs (4B to 671B parameters, open-weights and closed-source) on four multi-hop QA datasets, OC is strongly correlated with accuracy on every dataset (Pearson $r \in [0.86, 0.94]$, all $p \leq 0.0004$), and is the only signal we evaluate with $r \geq 0.85$ uniformly across all four datasets. Chain-of-thought self-consistency (CoT-SC; Wang et al., 2023) matches OC on HotpotQA and DROP ($r = 0.93, 0.87$) but drops to $r \approx 0.45$ on MuSiQue and StrategyQA. At the per-question level, OC contributes information beyond CoT-SC and semantic entropy on every dataset (cluster-robust $p \leq 10^{-16}$ for the OC coefficient), and the conclusion is robust to additionally controlling for constructed decomposition-aware baselines ($p \leq 10^{-13}$). The same signal yields selective-prediction improvements (accuracy at fixed coverage) over a tuned CoT-SC baseline at the equal-cost $K = 3$ budget (AUARC lifts of +0.086 to +0.096 and AUROC lifts of +0.092 to +0.164; 95% CIs exclude zero on every cell). On five frontier thinking models, where the decomposition is extracted from the model&#39;s own chain of thought, the same equal-cost comparison gives positive selective-prediction point-estimate lift on all 16 (dataset, budget, metric) cells tested, with 95% CIs excluding zero on 12 of the 16.
                 </div>
             </details>
     </div>
@@ -1283,7 +1233,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文关注文本嵌入基准和模型适配，属于自然语言处理领域的通用技术，未涉及LLM智能体在推荐系统中的应用、自进化推荐系统或AutoML在推荐/搜索/广告领域的实践。与三个重点方向均无直接关联，因此予以拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及文本嵌入基准和模型适配，属于自然语言处理中的通用文本表示和嵌入评估，与推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML无任何明确关联。未满足三个狭窄聚焦领域的任何一项。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1318,7 +1268,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13634v1" target="_blank" rel="noopener noreferrer">
-                用于LLM组合推理的运算子
+                用于LLM组合推理的操作域
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1340,7 +1290,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题专注于LLM中的组合推理，未涉及推荐系统、搜索或广告领域。没有提及LLM Agent在推荐系统中的应用、自演化系统或AutoML，不符合三个重点领域中的任何一个。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题关注LLM中的组合推理，属于通用AI推理范畴，没有提及推荐系统、搜索或广告的任何方面。不涉及LLM Agent在推荐系统中的应用、自演化系统或AutoML。因此，应被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1375,7 +1325,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13630v1" target="_blank" rel="noopener noreferrer">
-                从令牌到面孔：探究离散语音表示在三维面部动画中的应用
+                从令牌到面部：探索离散语音表示在3D面部动画中的应用
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1397,7 +1347,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文研究离散语音表示用于3D面部动画，属于计算机图形学和语音驱动的动画领域，不涉及推荐系统、搜索或广告。未聚焦于LLM Agent、自演化系统或AutoML，因此不符合任何指定焦点领域，予以拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文研究离散语音表示在3D面部动画中的应用，属于计算机图形学与人机交互领域，与推荐系统、搜索或广告中的LLM智能体、自进化系统或AutoML无关，因此完全不符合我的严格聚焦范围。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1417,6 +1367,63 @@
                  </summary> 
                  <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
                     The choice of speech representation is critical in speech-driven 3D facial animation. Representations differ in what they encode: SSL features emphasize segmental and semantic cues, neural codecs yield latents optimized for acoustic reconstruction, and ASR-style objectives produce label-based spaces. We evaluate four speech representation families for 3D facial synthesis, comparing their facial reconstruction quality across two facial decoders using objective metrics and a perceptual evaluation. We additionally conduct probing analyses that relate tokenized representations to phonetic units and to articulatory deformations. We found that encoding phonetic classes is beneficial for accurate facial animation prediction on both semantic and label-based representations with comparable facial animation quality. From the latter, we introduce an Audio Visual Text-to-Speech (AVTTS) pipeline that leverages, as a shared space, discrete representations to decode speech and 3D facial motion.
+                </div>
+            </details>
+    </div>
+</div><!--
+ * @Author: Doragd doragd@users.noreply.github.com
+ * @Date: 2025-10-09 23:23:38
+ * @LastEditors: Doragd doragd@users.noreply.github.com
+ * @LastEditTime: 2025-10-10 00:41:41
+ * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<div class="simple-paper-card p-3 collapsed-level-2">
+    <div class="flex justify-between items-start mb-1">
+        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13624v1" target="_blank" rel="noopener noreferrer">
+                超越统一令牌：时间序列语言模型的自适应压缩
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            Beyond Uniform Tokens: Adaptive Compression for Time Series Language Models
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Jialin Gan, Xin Qiu, Guangzhe Chen, Xue Wang
+        </div>
+        
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">本文关注时间序列语言模型的自适应压缩，与推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML无明确关联。未提及推荐系统应用，属于时间序列领域，不符合任何指定焦点领域。因此拒绝。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:39:26
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13624v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13624v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    Large language models (LLMs) have enabled time series (TS) analysis by jointly modeling numerical observations and textual context through a shared token interface. However, TS tokens and prompt tokens exhibit fundamentally different information structures, making uniform token processing inefficient. In this paper, we study token efficiency in TS language modeling from an asymmetric-token perspective. We show that TS tokens have highly uneven spectral contributions, where many tokens share redundant frequency patterns while a small subset preserves critical temporal evidence. We also observe that prompt-token influence attenuates with model depth, suggesting that full prompt retention across all layers is unnecessary. Based on these findings, we develop an adaptive token budgeting framework that compresses TS tokens via frequency-domain structure and progressively reduces prompt tokens across layers. Experiments across forecasting, classification, imputation, and anomaly detection demonstrate up to \textit{\textbf{7.68$\times$}} inference acceleration and performance gains in \textit{\textbf{78\%}} of evaluated settings, showing the effectiveness of asymmetric token compression for scalable TS foundation models.
                 </div>
             </details>
     </div>
@@ -1454,7 +1461,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于大型推理模型中的思维链机制，属于通用AI推理研究。未提及推荐系统、搜索或广告领域，也不涉及LLM Agent、自进化系统或AutoML等具体方向，与当前严格筛选的三个焦点领域无关。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文聚焦于大型语言模型中的思维链机制，属于LLM推理研究范畴，未涉及推荐系统、搜索或广告领域。论文主题与LLM Agent for Recommendation Systems、Self-Evolving Systems in RecSys/Search/Ads、Auto Research/AutoML for RecSys/Search/Ads三个重点方向均无关联。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1489,7 +1496,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13581v1" target="_blank" rel="noopener noreferrer">
-                意识的基调：心理健康月期间TikTok上的话题、情感和毒性地图
+                意识的音调：TikTok心理健康月期间的话题、情感与毒性地图
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1511,7 +1518,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文研究社交媒体（TikTok）上的话题、情感和毒性分析，属于一般性的社交媒体内容分析，未涉及推荐系统、LLM Agent、自我进化或AutoML任何一类焦点领域，因此予以拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及社交媒体内容分析（TikTok心理健康话题），与LLM Agent推荐系统、自进化系统或AutoML for RecSys/Search/Ads无任何关联。不属于三个焦点领域，因此应被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1568,7 +1575,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题涉及视觉-语言-动作模型在科学实验室中的应用，属于机器人或具身智能领域，与推荐系统、搜索或广告中的LLMAgent、自进化系统或AutoML无关。不满足三个焦点领域中的任何一个，因此得分极低。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题聚焦于科学实验室场景下的视觉-语言-动作模型，与LLM Agent推荐系统、自我进化推荐系统或AutoML推荐系统均无任何关联。属于其他领域应用，应被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1603,7 +1610,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13572v1" target="_blank" rel="noopener noreferrer">
-                ArogyaSutra：面向印度语言的多模态医学推理的多智能体框架
+                ArogyaSutra：面向印度语言的模态医疗推理的多智能体框架
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1625,7 +1632,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题明确针对医学推理，属于医疗领域，不属于推荐系统、搜索或广告。虽然涉及多智能体框架，但完全没有推荐系统上下文，因此不符合任何焦点领域。根据设定，非RecSys/Search/Ads领域应直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题明确聚焦于医疗领域的多模态推理和印度语言，与推荐系统、搜索或广告无关。不涉及LLM Agent在推荐系统中的应用、自进化系统或AutoML，因此与三个严格关注点均不匹配。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1660,7 +1667,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13558v1" target="_blank" rel="noopener noreferrer">
-                编辑比特，差异代码：视觉自回归模型的逐位残差编辑
+                编辑比特，差异编码：面向视觉自回归模型的按位残差编辑
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1682,7 +1689,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于视觉自回归模型的逐位残差编辑，属于计算机视觉与图像生成领域，与推荐系统、搜索或广告无任何关联。该主题不属于LLM Agent推荐系统、自进化系统或AutoML for RecSys/Search/Ads中的任何一个，因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及视觉自回归模型的按位残差编辑，属于计算机视觉和图像生成领域。没有提及LLM Agent、推荐系统、搜索或广告，也没有涉及自我进化或AutoML。与三大聚焦领域无关，因此直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1716,8 +1723,65 @@
 <div class="simple-paper-card p-3 collapsed-level-2">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
+            <a href="https://arxiv.org/abs/2606.13537v1" target="_blank" rel="noopener noreferrer">
+                混合何时有效？多语言稠密检索中查询嵌入插值的分析
+            </a>
+        </h3>
+        <span class="score-badge bg-gray-100 text-gray-800">
+            <i class="fa fa-star mr-1"></i>1/10
+        </span>
+    </div>
+    
+    <div class="paper-details">
+        <div class="mb-2 text-base text-gray-700">
+            When Does Mixing Help? Analyzing Query Embedding Interpolation in Multilingual Dense Retrieval
+        </div>
+        
+        <div class="mb-2 text-sm text-gray-600 italic">
+            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Tongyao Zhu, Chao-Ming Huang, Min-Yen Kan
+        </div>
+        
+        
+        
+        
+        <div class="mb-2">
+            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
+            <p class="text-gray-600 text-sm mt-1">该论文涉及多语言稠密检索中的查询嵌入插值分析，属于检索领域，但未提及推荐系统、搜索或广告中的应用，也未涉及LLM Agent、自进化系统或AutoML。因此不符合三个核心方向，应拒绝。</p>
+        </div>
+        
+        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
+                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 16:23:16
+                <span class="mx-2">|</span>
+                <a href="https://arxiv.org/abs/2606.13537v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+                    arXiv:2606.13537v1
+                </a>
+                <span class="mx-2">|</span>
+                <div class="flex flex-wrap"><span class="category-tag">cs.CL</span></div>
+            </div>
+            
+            
+            <details class="border-t border-gray-200 pt-4 mt-4">
+                 <summary class="text-sm text-primary cursor-pointer"> 
+                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
+                 </summary> 
+                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
+                    While mixed-language querying is ubiquitous in multilingual communities, the sensitivity of dense retrievers to such queries remains poorly understood. We present a ratio-controlled study on mMARCO that systematically evaluates retrieval performance by varying the mixing proportion of parallel query translations via embedding-level mixing -- constructing mixed queries as an interpolation of monolingual embeddings. Experiments with BGE-M3 demonstrate that an optimal mixing ratio outperforms the best monolingual endpoint in 88/105 cases. We uncover a distinct asymmetry driven by English dominance: mixing is uniformly beneficial when retrieving from non-English document indices, whereas indices containing English are best served by pure English queries. Furthermore, English acts as the strongest mixing partner for every non-English document language. Finally, when controlling for English dominance, mixing gains correlate negatively with typological distance. We conclude that language-mix sensitivity is structured and predictable, and we validate the robustness of these patterns across model families and scales.
+                </div>
+            </details>
+    </div>
+</div><!--
+ * @Author: Doragd doragd@users.noreply.github.com
+ * @Date: 2025-10-09 23:23:38
+ * @LastEditors: Doragd doragd@users.noreply.github.com
+ * @LastEditTime: 2025-10-10 00:41:41
+ * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<div class="simple-paper-card p-3 collapsed-level-2">
+    <div class="flex justify-between items-start mb-1">
+        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13507v1" target="_blank" rel="noopener noreferrer">
-                利用音频LLM过滤语音到语音训练数据
+                利用音频大语言模型过滤语音到语音训练数据
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1739,7 +1803,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文关注语音到语音训练数据的过滤，属于语音处理领域，未涉及推荐系统、搜索或广告。没有提及LLM Agent、自演化或自动机器学习在推荐/搜索/广告中的应用。因此，不符合任何焦点领域，应拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文聚焦于语音到语音训练数据过滤，属于语音处理领域，与LLM Agent推荐系统、自我进化系统或AutoML在推荐/搜索/广告中的应用均无关联。标题未涉及推荐、搜索或广告领域，因此评分低。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1796,7 +1860,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该标题涉及超分子化学基准测试，与LLM Agent推荐系统、自进化系统（检索/搜索/广告）、AutoML（检索/搜索/广告）均无任何关联。属于完全无关领域，应拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及超分子化学基准测试，与LLM智能体推荐系统、自演进推荐系统/搜索/广告系统、以及推荐系统/搜索/广告的自动化研究三个核心关注领域均无任何关联，属于完全不相关主题。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1831,7 +1895,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13473v1" target="_blank" rel="noopener noreferrer">
-                MaxProof：结合生成-验证器强化学习与群体级测试时扩展的数学证明规模化方法
+                MaxProof: 通过生成-验证器强化学习与群体级测试时扩展实现数学证明规模化
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1853,7 +1917,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题聚焦于数学证明的规模化方法，使用生成-验证器强化学习和群体级测试时扩展技术，属于数学推理或AI for Math领域。未涉及推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML，因此不满足任何焦点领域，应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题专注于数学证明的规模化，属于数学和算法领域，未提及推荐系统、搜索或广告。不涉及LLM Agent自进化或AutoML在推荐系统中的应用，因此不符合任何聚焦方向。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1888,7 +1952,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13464v1" target="_blank" rel="noopener noreferrer">
-                本体记忆增强的语音识别纠错用于长文本-语音交错对话
+                面向长文本-语音交错对话的本体记忆增强ASR纠正
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1910,7 +1974,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文关注语音识别纠错（ASR correction）和长文本-语音交错对话，属于语音/自然语言处理领域，未涉及推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML。与三个重点方向无任何关联，应直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文研究的是语音识别（ASR）纠正，属于语音和NLP领域，没有涉及推荐系统、搜索或广告中的LLM Agent、自进化系统或自动化研究。标题中未出现推荐、搜索、广告或任何相关技术，与三个关注领域完全无关。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -1945,7 +2009,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13452v1" target="_blank" rel="noopener noreferrer">
-                审视学术论文新颖性中作者与同行评审员之间的认知差距
+                审视学术论文新颖性方面的作者与同行评审之间的认知差距
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -1967,7 +2031,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文研究学术论文新颖性评估中的认知差距，属于学术评审和文献计量学领域，与LLM智能体推荐系统、自演化推荐系统或AutoML for RecSys/Search/Ads三个重点方向完全无关。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题讨论学术论文新颖性的认知差距，不涉及LLM Agent推荐系统、自进化系统或AutoML在推荐/搜索/广告中的应用，属于纯理论或学术过程研究，与指定焦点领域无关。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2002,7 +2066,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13441v1" target="_blank" rel="noopener noreferrer">
-                为什么采样不是选择：大型语言模型中的意向性、能动性和道德责任
+                为什么抽样不是选择：大型语言模型中的意图性、能动性和道德责任
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2024,7 +2088,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文讨论LLM中的意向性、能动性和道德责任，属于LLM伦理和哲学范畴，未涉及推荐系统、搜索引擎或广告领域的LLM智能体、自进化系统或自动研究。因此不符合任何聚焦领域，予以拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题讨论的是大型语言模型中的意图性、能动性和道德责任，属于AI伦理和哲学范畴，没有涉及推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML。该论文不属于三个焦点领域中的任何一个，因此应被严格拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2059,7 +2123,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13439v1" target="_blank" rel="noopener noreferrer">
-                S-GBT：针对NLP中单词替换攻击的认证鲁棒性的平滑增长有界张量
+                S-GBT：针对NLP中单词替换攻击的认证鲁棒性的平滑增长边界张量
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2081,7 +2145,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文聚焦于NLP中的认证鲁棒性，具体针对单词替换攻击，与LLM Agent推荐系统、自进化系统或AutoML均无关联。不符合三个严格聚焦领域中的任何一个，因此给予低分。</p>
+            <p class="text-gray-600 text-sm mt-1">论文主题是关于NLP中的鲁棒性认证，专注于对抗单词替换攻击，与LLM Agent推荐系统、自进化RecSys/Search/Ads系统或AutoML for RecSys/Search/Ads完全无关。属于安全领域，不符合任何焦点方向。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2116,7 +2180,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13411v1" target="_blank" rel="noopener noreferrer">
-                针对低资源阿尔及利亚方言的端到端混合谣言检测框架
+                面向低资源阿尔及利亚方言的端到端混合谣言检测框架
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2138,7 +2202,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文专注于谣言检测，应用领域为自然语言处理（NLP），未涉及推荐系统、搜索或广告。同时，未提及LLM代理、自进化系统或AutoML，与三个核心关注点无关，因此给予低分。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文主题为谣言检测，属于自然语言处理领域，未涉及推荐系统、搜索引擎或广告。同时，未提及LLM智能体、自进化系统或AutoML，与定义的三类关注点无关。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2173,7 +2237,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13677v1" target="_blank" rel="noopener noreferrer">
-                Mana：关节工具的精巧操作
+                Mana：铰接工具的灵巧操作
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2195,7 +2259,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题涉及机器人领域中关节工具的操作，属于机器人操控方向，与LLM Agent推荐系统、自进化系统或AutoML在推荐/搜索/广告中的应用完全无关，因此拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及机器人操作（灵巧操作铰接工具），完全不涉及推荐系统、搜索或广告领域，也未提及LLM Agent、自进化系统或AutoML。该主题与我的三个严格关注点无关，应直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2229,65 +2293,8 @@
 <div class="simple-paper-card p-3 collapsed-level-2">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13676v1" target="_blank" rel="noopener noreferrer">
-                模态强制用于可扩展的空间生成
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>1/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            Modality Forcing for Scalable Spatial Generation
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Bardienus Pieter Duisterhof, Deva Ramanan, Jeffrey Ichnowski, Justin Johnson, Ke...
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题涉及空间生成和模态强制，未提及LLM Agent、自进化系统或AutoML，且无推荐系统、搜索或广告的应用背景。因此不属于三个专注领域之一，应拒绝。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 17:59:45
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13676v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13676v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CV</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Text-to-image (T2I) models contain rich spatial priors. Synthesizing photorealistic, cluttered scenes requires an understanding of geometry, including perspective and relative scale. Prior works adapt T2I models to leverage this prior for depth prediction, but they require dense depth data and involve complex recipes. We propose Modality Forcing, a simple, scalable post-training recipe for joint image-depth generation using a single DiT trained on sparse depth data. Modality Forcing enables conditional and joint generation of image and depth in any permutation by assigning separate noise levels per modality. Per-modality decoders let us train on sparse, real-world depth and achieve strong, generalizable depth prediction. We further show that Modality Forcing inherits the scalability of T2I pre-training: by training a set of T2I models from scratch (370M to 3.3B parameters), we find that larger models trained on more image data produce more accurate depth. Our strongest model is competitive with state-of-the-art monocular depth estimators and reduces AbsRel by 57% relative to existing joint image-depth generative models. These results provide strong evidence that image generation is a scalable pre-training objective for spatial perception. https://modality-forcing.github.io/
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-2">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13674v1" target="_blank" rel="noopener noreferrer">
-                RepWAM：基于表示视觉-动作分词器的世界动作建模
+                RepWAM：基于表征视觉-动作标记器的世界动作建模
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2309,7 +2316,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题聚焦于世界动作建模和视觉-动作分词器，属于通用机器人或智能体动作规划领域，与推荐系统、搜索或广告无任何关联，因此严格拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">标题未涉及推荐系统、搜索或广告领域，也未提及LLM Agent、自演化系统或AutoML。该论文聚焦于世界动作建模和视觉-动作标记器，属于通用AI或机器人领域，与三个窄焦点完全不相关。因此，应予以拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2344,7 +2351,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13655v1" target="_blank" rel="noopener noreferrer">
-                Flex4DHuman: 用于4D人体重建的灵活多视角视频扩散
+                Flex4DHuman：用于四维人体重建的灵活多视图视频扩散
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2366,7 +2373,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题专注于4D人体重建，属于计算机视觉和图形学领域，与LLM Agent推荐系统、自进化推荐系统或AutoML推荐系统/搜索/广告无任何关联。因此，该论文明显不符合任何焦点领域，应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题表明其专注于4D人体重建，涉及多视图视频扩散技术，属于计算机视觉和图形学领域，与LLM推荐系统、自我进化推荐系统或AutoML for RecSys/Search/Ads这三个焦点领域毫无关联。因此，应直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2401,7 +2408,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13652v1" target="_blank" rel="noopener noreferrer">
-                世界追踪：生成式像素对齐几何超越可见区域
+                世界追踪：生成式像素对齐的不可见几何
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2423,7 +2430,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题涉及生成式像素对齐几何，属于计算机视觉和三维重建领域，与LLM Agent推荐系统、自进化推荐系统或AutoML for RecSys/Search/Ads完全无关。标题中无任何关于推荐、搜索、广告或LLM Agent的表述，因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题涉及计算机视觉中的几何生成，与LLM Agent推荐系统、自进化推荐系统或AutoML for RecSys/Search/Ads无任何关联。主题是像素对齐的不可见几何，属于计算机图形学或三维重建领域，不在指定焦点范围内。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2458,7 +2465,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13644v1" target="_blank" rel="noopener noreferrer">
-                Surflo：具有全局状态的一致性三维表面流动模型
+                Surflo：具有全局状态的一致三维表面流模型
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2480,7 +2487,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题涉及三维表面流动模型，属于计算机图形学或流体模拟领域，与LLM Agent推荐系统、自演化推荐系统或AutoML for RecSys/Search/Ads三个严格关注点毫无关联。因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及三维表面流模型，属于计算机图形学或物理仿真领域，与推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML不相关。严格不符合三个核心关注领域，因此直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2515,7 +2522,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13625v1" target="_blank" rel="noopener noreferrer">
-                重新审视长尾监控场景下的车辆颜色识别
+                重新审视长尾监控场景中的车辆颜色识别
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2537,7 +2544,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文主题是车辆颜色识别，属于计算机视觉领域，与LLM Agent推荐系统、自进化推荐系统或AutoML for RecSys无任何关联。未涉及推荐、搜索或广告相关应用，不符合任何聚焦方向，因此拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文关注车辆颜色识别，属于计算机视觉领域的分类任务，与LLM Agent、自进化系统或AutoML用于推荐/搜索/广告无关。论文未涉及任何推荐系统或搜索广告场景，因此直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2572,7 +2579,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13587v1" target="_blank" rel="noopener noreferrer">
-                面向杂乱背景下的有效废弃物分割以实现自动化废弃物回收
+                面向杂乱背景下的自动化垃圾回收的有效废弃物分割
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2594,7 +2601,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题涉及废弃物分割和自动化回收，属于计算机视觉和机器人领域，与要求的三类焦点领域（LLM Agent推荐系统、自进化推荐系统/搜索/广告、自动研究/自动机器学习应用于推荐系统/搜索/广告）没有任何关联。因此直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文聚焦于垃圾分割与自动化回收，属于计算机视觉和机器人领域的应用，与LLM推荐系统、自进化系统或AutoML在推荐搜索广告领域完全无关。因此不符合任何聚焦领域，应拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2651,7 +2658,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文聚焦于视频超分辨率的纹理增强，属于计算机视觉和图像处理领域，与LLM Agent推荐系统、自进化RecSys/Search/Ads系统或AutoML for RecSys/Search/Ads这三个严格关注点无关。题目中未见任何推荐系统、搜索或广告相关术语，因此直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文聚焦于视频超分辨率和事件驱动的纹理增强，属于计算机视觉和视频处理领域，与LLM Agent推荐系统、自进化推荐系统或AutoML for RecSys无任何关联。未涉及推荐、搜索或广告应用，也不包含LLM Agent、自进化或自动研究角度。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2686,7 +2693,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13562v1" target="_blank" rel="noopener noreferrer">
-                对比信息增强和领域对抗训练用于成人到新生儿磁共振重建泛化
+                对比增强和领域对抗训练用于成人到新生儿MR重建泛化的研究
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2708,7 +2715,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文专注于医学影像重建（MRI），属于计算机视觉和医学图像处理领域，与推荐的三个核心焦点（LLM Agent推荐系统、自我进化系统、AutoML）均无关联。没有涉及推荐、搜索或广告系统，因此被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文题目涉及医学图像重建（MRI），属于计算机视觉和医学影像领域，与LLM代理推荐系统、自进化推荐系统或AutoML在推荐/搜索/广告中的应用无关，完全不符合三个焦点领域。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2743,7 +2750,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13528v1" target="_blank" rel="noopener noreferrer">
-                旧法新用：经典降维方法用于高效显著性引导的生物特征攻击检测
+                旧瓶装新酒：经典降维方法用于高效的显著性引导的生物攻击检测
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2765,7 +2772,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文聚焦于生物特征攻击检测，属于安全领域，与推荐系统、搜索或广告中的LLM Agent、自演化系统或AutoML均无关联。缺乏任何推荐系统上下文，因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文主题为生物攻击检测（biometric attack detection），属于安全领域，与推荐系统（RecSys）、搜索、广告无关。未涉及LLM Agent、自进化系统或AutoML，完全不符合任何聚焦领域。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2800,7 +2807,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13515v1" target="_blank" rel="noopener noreferrer">
-                MaskWAM：统一掩码提示与预测的世界-动作模型
+                MaskWAM：统一掩码提示与预测的世界行动模型
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2822,7 +2829,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题涉及世界模型和动作模型，属于机器人或决策领域，与LLM Agent推荐系统、自演进推荐系统/搜索/广告或自动研究/自动机器学习在推荐系统/搜索/广告中的应用均无关联，因此被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">标题涉及世界模型和行动模型，与推荐系统、搜索或广告中的LLM代理、自我进化或自动研究无关。无法归入任何指定的狭窄领域。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2879,7 +2886,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文涉及多相机融合和室内定位，属于计算机视觉和定位技术领域，与LLM智能体推荐系统、自进化推荐/搜索/广告系统或AutoML推荐/搜索/广告完全无关。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题明确指向视觉室内定位，属于计算机视觉和机器人领域的应用，与LLM Agent推荐系统、自演化推荐系统/搜索/广告、AutoML for RecSys/Search/Ads这三个严格关注领域完全无关。标题中未提及任何推荐、搜索、广告或LLM Agent相关术语，且室内定位不属于需要推荐系统上下文的宽泛概念，因此直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2914,7 +2921,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13503v1" target="_blank" rel="noopener noreferrer">
-                面向非结构化环境鲁棒长期地点识别的异构激光雷达早期融合与学习重排序策略
+                异构激光雷达早期融合与学习式重排序策略用于非结构化环境中的鲁棒长期地点识别
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2936,7 +2943,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文涉及激光雷达融合和重排序用于地点识别，属于机器人感知和定位领域，与推荐系统、搜索或广告中的LLM Agent、自演化或自动研究完全无关。不满足任何聚焦领域条件，因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文聚焦于地点识别（Place Recognition）任务，属于机器人或自动驾驶中的定位问题，与推荐系统、搜索或广告完全无关。不涉及LLM Agent、自进化系统或AutoML，因此不符合任何焦点领域，应被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -2971,7 +2978,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13497v1" target="_blank" rel="noopener noreferrer">
-                SPARC：从机器人演示中可靠地大规模获取空间标注
+                SPARC：大规模机器人演示中的可靠空间标注
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -2993,7 +3000,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文专注于机器人领域的空间标注，与推荐系统、搜索引擎或广告系统无关，也不涉及LLM智能体、自进化系统或AutoML在推荐/搜索/广告中的应用。不符合任何聚焦领域，应拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文关注机器人演示的空间标注，属于机器人领域，与LLM Agent推荐系统、自我进化推荐系统/搜索/广告、自动研究/自动机器学习无任何直接关联，且缺乏推荐系统、搜索或广告的应用背景，因此应拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3028,7 +3035,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13496v1" target="_blank" rel="noopener noreferrer">
-                预算约束下的逐步扩散缓存
+                预算受限的步级扩散缓存
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3050,7 +3057,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题涉及扩散缓存和预算约束，与LLM智能体推荐系统、自我进化系统或自动化研究/自动机器学习在推荐/搜索/广告中的应用无任何关联。未提及推荐系统、搜索或广告上下文，因此不符合任何焦点领域。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题主要涉及扩散模型的缓存优化，与推荐系统、搜索或广告中的LLM智能体、自我进化或自动研究三个核心领域无任何关联。因此，它不符合我们的关注范围，应予以拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3085,7 +3092,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13494v1" target="_blank" rel="noopener noreferrer">
-                NavWAM：一种用于目标条件视觉导航的导航世界动作模型
+                NavWAM：一种用于目标导向视觉导航的导航世界动作模型
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3107,7 +3114,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于视觉导航和动作模型，属于机器人/自动驾驶领域，没有明确提及推荐系统、搜索或广告相关应用。不符合LLM Agent for Recommendation Systems、Self-Evolving Systems in RecSys/Search/Ads或Auto Research/AutoML for RecSys/Search/Ads中的任何一个具体领域。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题涉及视觉导航和动作模型，属于机器人或自动驾驶领域，与推荐系统、搜索或广告完全无关。论文未涉及LLM Agent在推荐系统中的应用、自演化推荐系统或AutoML在推荐系统/搜索/广告中的具体应用，因此必须拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3142,7 +3149,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13488v1" target="_blank" rel="noopener noreferrer">
-                用于计算机辅助手术中部分到完整点云配准的点向几何感知Transformer
+                用于计算机辅助手术中点对点云配准的点向几何感知Transformer
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3164,7 +3171,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文聚焦于计算机辅助手术中的点云配准，属于医学图像处理领域，与LLM Agent推荐系统、自进化推荐/搜索/广告系统、AutoML推荐/搜索/广告均无任何关联。不符合任何一项焦点领域。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题专注于计算机辅助手术中的点云配准，属于计算机视觉和医学图像处理领域，与LLM Agent推荐系统、自我进化系统或AutoML for RecSys/Search/Ads三个焦点领域无关，因此被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3199,7 +3206,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13460v1" target="_blank" rel="noopener noreferrer">
-                VISA：VLM引导的实例语义审计用于3D占据世界模型
+                VISA：VLM引导的实例语义审计用于3D占用世界模型
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3221,7 +3228,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题涉及3D占据世界模型和视觉语言模型（VLM），属于计算机视觉和自动驾驶领域，与LLM Agent推荐系统、自进化推荐系统、AutoML推荐系统三个核心方向无关。未体现任何推荐、搜索或广告应用背景，因此直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文涉及3D占用世界模型和视觉语言模型（VLM），属于自动驾驶或3D场景理解领域，与LLM Agent for Recommendation Systems、Self-Evolving Systems in RecSys/Search/Ads或Auto Research/AutoML for RecSys/Search/Ads三个焦点领域无关。因此，直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3278,7 +3285,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题涉及相机克隆和多镜头成像，属于计算机视觉和图形学范畴，与LLM Agent推荐系统、自演化系统或AutoML在推荐/搜索/广告中的应用无关。因此不符合任何聚焦方向，应直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及相机克隆和多镜头技术，属于计算机视觉和图像处理领域，与LLM Agent推荐系统、自演化推荐系统或AutoML for RecSys/Search/Ads三个重点方向均无关联。缺少任何推荐、搜索或广告应用背景，因此予以拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3312,65 +3319,8 @@
 <div class="simple-paper-card p-3 collapsed-level-2">
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
-            <a href="https://arxiv.org/abs/2606.13427v1" target="_blank" rel="noopener noreferrer">
-                VietFashion：面向文化服饰的草图-文本组合图像检索基准
-            </a>
-        </h3>
-        <span class="score-badge bg-gray-100 text-gray-800">
-            <i class="fa fa-star mr-1"></i>1/10
-        </span>
-    </div>
-    
-    <div class="paper-details">
-        <div class="mb-2 text-base text-gray-700">
-            VietFashion: Benchmarking Sketch-Text Composed Image Retrieval for Cultural Outfits
-        </div>
-        
-        <div class="mb-2 text-sm text-gray-600 italic">
-            <i class="fa fa-user-circle-o text-gray-500 mr-1"></i>Hoang-Nguyen Cao, Le-Hoang Bui, Dinh-Khoi Vo, Minh-Triet Tran, Trung-Nghia Le
-        </div>
-        
-        
-        
-        
-        <div class="mb-2">
-            <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文研究草图-文本组合图像检索，属于检索领域，但未涉及LLM Agent、自演化系统或AutoML，且聚焦文化服饰，非推荐系统、搜索或广告的应用。不符合任何严格焦点领域，因此拒绝。</p>
-        </div>
-        
-        <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
-                <i class="fa fa-calendar-o mr-1"></i> 2026-06-11 14:54:54
-                <span class="mx-2">|</span>
-                <a href="https://arxiv.org/abs/2606.13427v1" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                    arXiv:2606.13427v1
-                </a>
-                <span class="mx-2">|</span>
-                <div class="flex flex-wrap"><span class="category-tag">cs.CV</span></div>
-            </div>
-            
-            
-            <details class="border-t border-gray-200 pt-4 mt-4">
-                 <summary class="text-sm text-primary cursor-pointer"> 
-                     查看完整摘要 <i class="fa fa-chevron-down ml-1 text-xs"></i> 
-                 </summary> 
-                 <div class="abstract-content mt-2 p-3 bg-gray-50 rounded-md text-sm text-gray-700">
-                    Cultural garments pose a unique challenge for visual retrieval systems, as their identity often depends on subtle structural and symbolic details that are poorly captured by standard AI models. We introduce VietFashion, a new benchmark for sketch-text composed image retrieval centered on the Ao Dai, a traditional Vietnamese garment. VietFashion enables designers and researchers to retrieve culturally meaningful outfits using a combination of hand-drawn sketches, which convey garment structure, and textual descriptions, which encode cultural semantics. The dataset is initialized with 650 sketches and expanded using generative models to produce over 21,000 photorealistic images with aligned captions. Textual prompts that describe detailed outfit attributes, which are extracted from fashion magazines to ensure authenticity and diversity. To better reflect the inherent ambiguity of design intent, VietFashion adopts a multi-target retrieval setting, where a single query may correspond to multiple valid results. We establish standardized evaluation protocols and benchmark state-of-the-art composed image retrieval methods. Experimental results reveal significant performance gaps in modeling fine-grained cultural semantics and multi-modal composition, positioning VietFashion as a challenging benchmark for fine-grained fashion retrieval. The dataset is publicly available at: https://hng0303.github.io/VietFashion.
-                </div>
-            </details>
-    </div>
-</div><!--
- * @Author: Doragd doragd@users.noreply.github.com
- * @Date: 2025-10-09 23:23:38
- * @LastEditors: Doragd doragd@users.noreply.github.com
- * @LastEditTime: 2025-10-10 00:41:41
- * @FilePath: /Algorithm-Practice-in-Industry/paperBotV2/frontend/templates/normal_paper_template.html
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<div class="simple-paper-card p-3 collapsed-level-2">
-    <div class="flex justify-between items-start mb-1">
-        <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13410v1" target="_blank" rel="noopener noreferrer">
-                基于上下文运动的人员识别
+                基于情境运动的人物识别
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3392,7 +3342,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文标题仅涉及人员识别，未提及推荐系统、LLM Agent、自我进化或AutoML等任何核心关注领域，因此不符合要求。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于人物识别（计算机视觉领域），与推荐系统、搜索或广告中的LLM Agent、自演化系统或自动化研究无任何关联。该主题属于通用视觉任务，不符合任何指定焦点领域。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3427,7 +3377,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13382v1" target="_blank" rel="noopener noreferrer">
-                SmartFont: 面向少样本书体生成的动态条件分配
+                SmartFont：面向小样本字体生成的动态条件分配
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3449,7 +3399,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文主题为少样本书体生成（Font Generation），属于计算机视觉或图形学领域，与LLM Agent推荐系统、自进化推荐系统或AutoML推荐系统均无关联。标题未提及任何推荐、搜索或广告相关术语，因此完全不符合我的严格筛选范围。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文专注于小样本字体生成（Few-Shot Font Generation），属于计算机视觉和图形学领域，与LLM Agent推荐系统、自演化推荐/搜索/广告系统或AutoML在推荐/搜索/广告中的应用均无关联。标题未提及任何推荐系统、搜索或广告上下文，且不属于任何焦点领域，因此应被拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3484,7 +3434,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13376v1" target="_blank" rel="noopener noreferrer">
-                MoVerse：基于全景高斯支架的实时视频世界建模
+                MoVerse: 基于全景高斯支架的实时视频世界建模
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3506,7 +3456,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于视频世界建模和全景高斯支架，属于计算机视觉和3D场景理解领域，未涉及LLM Agent、自进化系统或AutoML在推荐/搜索/广告中的应用。因此，不匹配任何核心关注领域，应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及实时视频世界建模和全景高斯支架，属于计算机视觉和图形学领域，与LLM Agent推荐系统、自演化推荐系统或AutoML推荐系统均无任何关联。未提及推荐、搜索或广告应用，因此直接拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3563,7 +3513,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">论文标题聚焦于计算机辅助设计（CAD）的生成与编辑，属于计算机图形学与设计自动化领域，与LLM Agent推荐系统、自进化推荐系统或推荐系统的自动研究/AutoML无任何关联。不满足三个专注领域中的任何一个，因此应被拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文标题涉及CAD（计算机辅助设计）的生成与编辑，属于计算机图形学与设计自动化领域，与推荐系统、搜索或广告毫无关联。没有提及LLM智能体应用于推荐系统、自我进化系统或自动机器学习，因此完全不符合我的严格筛选范围。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3598,7 +3548,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13366v1" target="_blank" rel="noopener noreferrer">
-                用于操作率-失真-感知优化的双重约束扩散图像压缩
+                面向操作率-失真-感知优化的双重约束扩散图像压缩
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3620,7 +3570,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文主题为图像压缩，属于计算机视觉和图像处理领域，与LLM Agent推荐系统、自进化推荐系统或AutoML for RecSys/Search/Ads均无任何关联。因此，直接拒绝。</p>
+            <p class="text-gray-600 text-sm mt-1">该论文专注于图像压缩，属于信号处理或计算机视觉领域，未涉及推荐系统、搜索或广告中的LLM Agent、自进化系统或AutoML。不符合任何聚焦区域，应拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
@@ -3655,7 +3605,7 @@
     <div class="flex justify-between items-start mb-1">
         <h3 class="text-base font-medium text-primary hover:underline transition-colors">
             <a href="https://arxiv.org/abs/2606.13364v1" target="_blank" rel="noopener noreferrer">
-                VideoMDM：从2D监督生成3D人体运动
+                VideoMDM：基于2D监督的3D人体运动生成
             </a>
         </h3>
         <span class="score-badge bg-gray-100 text-gray-800">
@@ -3677,7 +3627,7 @@
         
         <div class="mb-2">
             <strong class="text-gray-700 text-sm"><i class="fa fa-thumbs-up text-green-500 mr-1"></i>个性化推荐理由:</strong>
-            <p class="text-gray-600 text-sm mt-1">该论文涉及3D人体运动生成，属于计算机视觉与图形学领域，与推荐系统、搜索或广告中的LLM Agent、自演化系统或自动研究完全无关。不满足任何指定焦点领域，因此给予最低评分。</p>
+            <p class="text-gray-600 text-sm mt-1">论文标题涉及3D人体运动生成，属于计算机视觉与图形学领域，与推荐系统、搜索、广告以及LLM智能体、自演化系统或AutoML均无任何关联，不符合任何聚焦方向，因此必须拒绝。</p>
         </div>
         
         <div class="flex flex-wrap items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
