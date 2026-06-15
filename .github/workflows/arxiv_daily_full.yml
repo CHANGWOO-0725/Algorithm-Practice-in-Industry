@@ -3,8 +3,8 @@ name: arxiv_daily_full
 on:
   # 定时触发
   schedule:
-    # 每天UTC时间0:00（北京时间8:00）执行
-    - cron: '0 0 * * *'
+    # 每天UTC时间2:17（北京时间10:17）执行，避开arXiv更新临界点
+    - cron: '17 2 * * *'
   # 手动触发
   workflow_dispatch:
 
@@ -64,7 +64,7 @@ jobs:
           # 单页抓取数量，实际抓取会按页遍历
           MAX_PAPERS: "100"
           # 回看最近36小时，减少 arXiv 更新延迟导致的漏抓
-          ARXIV_LOOKBACK_HOURS: "36"
+          ARXIV_LOOKBACK_HOURS: "72"
           # arXiv API 分页和限流保护配置
           ARXIV_PAGE_SIZE: "100"
           ARXIV_MAX_PAGES: "20"
