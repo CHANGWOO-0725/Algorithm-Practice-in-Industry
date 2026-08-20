@@ -1,0 +1,51 @@
+{
+  "date": "20260820",
+  "status": "success",
+  "stage": "completed",
+  "workflow": "arxiv_daily_full",
+  "run_id": "32327172165",
+  "run_attempt": "1",
+  "trigger": "schedule",
+  "started_at": "2026-08-20T03:09:40+00:00",
+  "ended_at": "2026-08-20T03:21:23+00:00",
+  "fetch": {
+    "success": true,
+    "total_papers": 504,
+    "by_category": {
+      "cs.IR": {
+        "success": true,
+        "papers": 47,
+        "pages": 1,
+        "error": ""
+      },
+      "cs.CL": {
+        "success": true,
+        "papers": 175,
+        "pages": 2,
+        "error": ""
+      },
+      "cs.CV": {
+        "success": true,
+        "papers": 282,
+        "pages": 3,
+        "error": ""
+      }
+    }
+  },
+  "llm": {
+    "rough_rank_total": 322,
+    "rough_rank_success": 322,
+    "rough_rank_failed": 0,
+    "fine_rank_total": 10,
+    "fine_rank_success": 10,
+    "fine_rank_failed": 0,
+    "avg_rough_score": 1.3,
+    "avg_fine_score": 5.8
+  },
+  "output": {
+    "daily_json_written": true,
+    "html_generated": true,
+    "feishu_should_send": true
+  },
+  "error": ""
+}
