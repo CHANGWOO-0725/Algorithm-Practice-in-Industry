@@ -128,3 +128,4 @@ date,run_id,run_attempt,workflow,trigger,status,stage,started_at,ended_at,durati
 20260915,34942995438,1,arxiv_daily_full,schedule,failed,fetch,2026-09-15T09:26:23+00:00,2026-09-15T11:15:46+00:00,6563,24,24,0,,0,0,0,0,0,0,0,0,false,false,arXiv API 请求多次失败: 429 error from https://arxiv.org/api/query
 20260915,34942995438,1,arxiv_daily_full,schedule,failed,fetch,2026-09-15T12:15:46+00:00,2026-09-15T13:28:09+00:00,4343,0,0,,,0,0,0,0,0,0,0,0,false,true,"arXiv API 请求多次失败: HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)"
 20260916,35069662711,1,arxiv_daily_full,schedule,success,completed,2026-09-16T07:40:38+00:00,2026-09-16T07:55:04+00:00,866,473,35,209,229,454,454,0,10,10,0,1.51,5.1,true,true,
+20260917,35195371732,1,arxiv_daily_full,schedule,success,completed,2026-09-17T07:37:25+00:00,2026-09-17T07:52:49+00:00,924,542,37,228,277,206,206,0,10,10,0,1.42,3.3,true,true,
